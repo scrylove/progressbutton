@@ -16,58 +16,58 @@ import static org.fest.assertions.api.Assertions.assertThat;
 @Config(manifest = "progressbutton/AndroidManifest.xml")
 public class ProgressButtonTest {
   private Activity activity;
-  private ProgressButton view;
+  private ProgressButton button;
 
   @Before
   public void setUp() throws Exception {
     activity = Robolectric.buildActivity(Activity.class).create().start().resume().get();
-    view = new ProgressButton(activity);
+    button = new ProgressButton(activity);
   }
 
   @Test
   public void testInit() throws Exception {
-    assertThat(view).isNotNull();
+    assertThat(button).isNotNull();
   }
 
   @Test
   public void testPin() throws Exception {
-    view.setPinned(false);
-    assertThat(view.isChecked()).isEqualTo(view.isPinned()).isFalse();
+    button.setPinned(false);
+    assertThat(button.isChecked()).isEqualTo(button.isPinned()).isFalse();
 
-    view.setPinned(true);
-    assertThat(view.isChecked()).isEqualTo(view.isPinned()).isTrue();
+    button.setPinned(true);
+    assertThat(button.isChecked()).isEqualTo(button.isPinned()).isTrue();
   }
 
   @Test
   public void testToggle() throws Exception {
     // Setup
-    view.setPinned(false);
-    assertThat(view.isChecked()).isEqualTo(view.isPinned()).isFalse();
+    button.setPinned(false);
+    assertThat(button.isChecked()).isEqualTo(button.isPinned()).isFalse();
 
     // Toggle twice and verify each time
-    view.toggle();
-    assertThat(view.isChecked()).isEqualTo(view.isPinned()).isTrue();
-    view.toggle();
-    assertThat(view.isChecked()).isEqualTo(view.isPinned()).isFalse();
+    button.toggle();
+    assertThat(button.isChecked()).isEqualTo(button.isPinned()).isTrue();
+    button.toggle();
+    assertThat(button.isChecked()).isEqualTo(button.isPinned()).isFalse();
   }
 
   @Test
   public void testValidProgressValueZero() throws Exception {
-    view.setProgress(0);
-    assertThat(view.getProgress()).isEqualTo(0);
+    button.setProgress(0);
+    assertThat(button.getProgress()).isEqualTo(0);
   }
 
   @Test
   public void testValidProgressValueMax() throws Exception {
-    view.setProgress(100);
-    assertThat(view.getProgress()).isEqualTo(100);
+    button.setProgress(100);
+    assertThat(button.getProgress()).isEqualTo(100);
   }
 
   @Test
   public void testInvalidProgressValue() throws Exception {
     Exception exception = null;
     try {
-      view.setProgress(101);
+      button.setProgress(101);
     } catch (Exception e) {
       exception = e;
     }
@@ -81,7 +81,7 @@ public class ProgressButtonTest {
   public void testAnotherInvalidProgressValue() throws Exception {
     Exception exception = null;
     try {
-      view.setProgress(-1);
+      button.setProgress(-1);
     } catch (Exception e) {
       exception = e;
     }
