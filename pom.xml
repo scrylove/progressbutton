@@ -17,7 +17,7 @@
   <version>1.0.4-SNAPSHOT</version>
 
   <name>Android Progress Button (Parent)</name>
-  <description>A button that helps with showing progress</description>
+  <description>ProgressButton is a custom progress indicator with a tiny footprint.</description>
   <url>https://github.com/f2prateek/progressbutton</url>
   <inceptionYear>2012</inceptionYear>
 
